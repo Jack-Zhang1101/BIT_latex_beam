@@ -1,0 +1,104 @@
+\bitsection{方法与实现}{整体框架、核心原理、训练与推理}
+
+\begin{frame}{整体框架与模块接口}
+  \bitimageplaceholder[.52\textheight]{插入整体框架图：输入条件、关键模块与输出}
+  \vspace{2mm}
+  \begin{itemize}
+    \item \bitplaceholder{指出主要数据流与模块之间的接口。}
+    \item \bitplaceholder{区分已有组件与本工作的关键改动。}
+  \end{itemize}
+  \bitsource{框架图来源：论文 Fig. X / 自绘方法图。}
+\end{frame}
+
+\begin{frame}{关键模块与设计动机}
+  \bitcolumns{%
+    \bitimageplaceholder[.48\textheight]{模块结构图 / 算法示意图}
+    {\scriptsize\color{BITgray}图注：主要输入输出与符号。}
+  }{%
+    \begin{block}{模块作用}
+      \small\bitplaceholder{解释该模块处理哪类输入、输出什么量。}
+    \end{block}
+    \begin{block}{设计理由}
+      \begin{itemize}
+        \item \small\bitplaceholder{对应前面提出的具体困难。}
+        \item \small\bitplaceholder{说明与替代设计的差异。}
+      \end{itemize}
+    \end{block}
+  }
+  \bitcallout{关键作用：\bitplaceholder{模块如何改变后续计算或决策。}}
+\end{frame}
+
+\begin{frame}{目标函数与关键推导}
+  \begin{block}{优化目标（通用排版占位）}
+    \[
+      \min_{\theta}\ \mathcal{L}(\theta)
+      =\mathcal{L}_{\mathrm{task}}(\theta)
+      +\lambda\mathcal{L}_{\mathrm{reg}}(\theta)
+    \]
+  \end{block}
+  \bitcolumns{%
+    \small
+    \begin{description}
+      \item[任务项] \bitplaceholder{希望拟合或优化的行为。}
+      \item[约束项] \bitplaceholder{抑制的误差或约束的性质。}
+      \item[权重] \bitplaceholder{参数含义与选取依据。}
+    \end{description}
+  }{%
+    \small
+    \begin{align*}
+      z_t &= E_{\theta}(x_{\leq t},c),\\
+      \hat{y}_t &= D_{\theta}(z_t).
+    \end{align*}
+    \bitplaceholder{在这里解释中间变量与推导条件。}
+  }
+  \bitsource{公式为版式占位。实际汇报时替换为论文公式并标注编号。}
+\end{frame}
+
+\begin{frame}{训练与推理过程}
+  \bitcolumns{%
+    \begin{block}{训练阶段}
+      \small
+      \begin{enumerate}
+        \item \bitplaceholder{采样数据与构造输入。}
+        \item \bitplaceholder{前向预测并计算目标。}
+        \item \bitplaceholder{更新参数与保存模型。}
+      \end{enumerate}
+      \vspace{2mm}
+      \bitstrong{监督 / 奖励：}\bitplaceholder{信号来源。}
+    \end{block}
+  }{%
+    \begin{block}{推理 / 执行阶段}
+      \small
+      \begin{enumerate}
+        \item \bitplaceholder{读取可用观测与条件。}
+        \item \bitplaceholder{预测输出或执行动作。}
+        \item \bitplaceholder{更新历史并继续运行。}
+      \end{enumerate}
+      \vspace{2mm}
+      \bitstrong{计算开销：}\bitplaceholder{频率、延迟或预算。}
+    \end{block}
+  }
+  \bitcallout{阶段差异：\bitplaceholder{说明训练可用、部署时不可用的信息。}}
+\end{frame}
+
+% 讲解版式：第二次点击显示同一页的解释，不改变版面位置。
+\begin{frame}{计算流程的分步讲解}
+  \centering
+  \begin{tikzpicture}[node distance=11mm,
+    module/.style={draw=BITgreen,line width=.55pt,minimum width=32mm,
+      minimum height=12mm,align=center,font=\small},
+    flow/.style={-{Latex[length=2mm]},draw=BITgray,line width=.6pt}]
+    \node[module] (input) {输入 / 历史信息};
+    \node[module,right=of input] (model) {核心模型};
+    \node[module,right=of model] (output) {预测 / 控制输出};
+    \draw[flow] (input)--(model);
+    \draw[flow] (model)--(output);
+  \end{tikzpicture}
+  \vspace{5mm}
+  \begin{minipage}{.94\textwidth}
+    \uncover<1->{\bitstrong{第一步：}\bitplaceholder{说明输入信息与模型的基本计算。}\par}
+    \vspace{2mm}
+    \uncover<2->{\bitstrong{第二步：}\bitplaceholder{揭示输出、历史更新或反馈机制。}\par}
+  \end{minipage}
+  \bitsource{流程图中的文本、节点和箭头均由原生 TikZ 绘制，可直接修改。}
+\end{frame}

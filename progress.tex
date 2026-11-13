@@ -1,0 +1,47 @@
+% !TEX program = xelatex
+% 阶段工作入口：目标、实现、实验、问题与计划。
+\documentclass[aspectratio=169,10pt,fontset=none]{ctexbeamer}
+\usetheme{BITUniversal}
+\input{config}
+\begin{document}
+\BITtitlepage
+\BITcontents
+\bitsection{目标与当前问题}{本阶段任务与上次组会的后续工作}
+\begin{frame}{阶段目标与完成情况}
+  \small\renewcommand{\arraystretch}{1.8}
+  \begin{tabularx}{\textwidth}{@{}XXX@{}}
+    \toprule\bitstrong{阶段任务} & \bitstrong{当前状态} & \bitstrong{结果证据}\\\midrule
+    \bitplaceholder{任务 A} & \bitplaceholder{已完成 / 进行中} & \bitplaceholder{结果或产物}\\
+    \bitplaceholder{任务 B} & \bitplaceholder{已完成 / 进行中} & \bitplaceholder{结果或产物}\\\bottomrule
+  \end{tabularx}
+\end{frame}
+\bitsection{方案与实现}{本阶段的具体改动与技术依据}
+\begin{frame}{方案与关键改动}
+  \bitimageplaceholder[.46\textheight]{插入当前方案、系统结构或实现截图}
+  \bitcallout{本阶段改动：\bitplaceholder{改了什么，为什么这样改。}}
+\end{frame}
+\bitsection{实验与问题分析}{设置、结果、异常现象与排查证据}
+\begin{frame}{实验设置与结果}
+  \bitexperiment{\bitplaceholder{验证当前改动的效果。}}{\bitplaceholder{基线、控制变量与统计方式。}}
+  \bitimageplaceholder[.43\textheight]{插入结果曲线、定量表格或行为对比}
+  \bitcallout{观察：\bitplaceholder{陈述有证据支持的结果。}}
+\end{frame}
+\begin{frame}{当前问题与排查结果}
+  \begin{description}
+    \item[现象] \bitplaceholder{异常在哪种条件下发生。}
+    \item[已有证据] \bitplaceholder{哪些实验缩小了原因范围。}
+    \item[待验证假设] \bitplaceholder{明确标注尚未确认的解释。}
+  \end{description}
+\end{frame}
+\bitsection{计划与讨论}{下一步任务、完成标准与需要讨论的问题}
+\begin{frame}{后续计划}
+  \small\renewcommand{\arraystretch}{1.8}
+  \begin{tabularx}{\textwidth}{@{}p{22mm}XX@{}}
+    \toprule\bitstrong{时间} & \bitstrong{任务} & \bitstrong{完成标准}\\\midrule
+    近期 & \bitplaceholder{优先解决的问题} & \bitplaceholder{可检查的结果}\\
+    下一阶段 & \bitplaceholder{后续实验或实现} & \bitplaceholder{预期产出}\\\bottomrule
+  \end{tabularx}
+  \bitcallout{需要讨论：\bitplaceholder{具体的技术选择或实验安排。}}
+\end{frame}
+\BITthankyou
+\end{document}

@@ -1,0 +1,22 @@
+.build/
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Generated previews; retain source assets and figure PDFs.
+/main.pdf
+/paper.pdf
+/tutorial.pdf
+/progress.pdf
+/preview/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

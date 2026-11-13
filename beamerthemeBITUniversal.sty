@@ -1,0 +1,218 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeBITUniversal}[2026/11/09 BIT universal meeting theme]
+\RequirePackage{tikz}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{etoolbox}
+\usetikzlibrary{arrows.meta,positioning}
+
+% Colours and dimensions follow the supplied BIT PowerPoint reference.
+\definecolor{BITgreen}{HTML}{005A35}
+\definecolor{BITtitle}{HTML}{006638}
+\definecolor{BITlight}{HTML}{E8F2ED}
+\definecolor{BITorange}{HTML}{A83D08}
+\definecolor{BITtext}{HTML}{26332D}
+\definecolor{BITgray}{HTML}{66736D}
+\definecolor{BITline}{HTML}{C3D6CB}
+
+\IfFontExistsTF{Arial}{\setsansfont{Arial}\setmainfont{Arial}}{}
+\IfFontExistsTF{Microsoft YaHei}{%
+  \setCJKmainfont{Microsoft YaHei}\setCJKsansfont{Microsoft YaHei}
+  \setCJKmonofont{Microsoft YaHei}
+}{\setCJKmainfont{FandolHei-Regular}\setCJKsansfont{FandolHei-Regular}
+  \setCJKmonofont{FandolFang-Regular}}
+\usefonttheme{professionalfonts}
+\setbeamercolor{normal text}{fg=BITtext,bg=white}
+\setbeamercolor{structure}{fg=BITgreen}
+\setbeamercolor{frametitle}{fg=white,bg=}
+\setbeamercolor{itemize item}{fg=BITgreen}
+\setbeamercolor{itemize subitem}{fg=BITgray}
+\setbeamercolor{block title}{fg=BITgreen,bg=white}
+\setbeamercolor{block body}{fg=BITtext,bg=white}
+\setbeamercolor{alerted text}{fg=BITorange}
+\setbeamerfont{normal text}{size=\normalsize}
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamerfont{block title}{size=\normalsize,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\raise.15ex\hbox{\scriptsize$\bullet$}}
+\setbeamertemplate{itemize subitem}{\raise.1ex\hbox{\tiny$\bullet$}}
+\setbeamersize{text margin left=7.5mm,text margin right=7.5mm}
+\setlength{\parskip}{.3em}
+\setbeamertemplate{blocks}[default]
+\addtobeamertemplate{block begin}{}{\vspace{-.35em}}
+\hypersetup{colorlinks=true,urlcolor=BITgreen,linkcolor=BITgreen}
+
+% Metadata kept independent of the paper author list.
+\newcommand{\BITpresenter}{汇报人姓名}
+\newcommand{\BITaffiliation}{北京理工大学}
+\newcommand{\BITmeeting}{课题组组会}
+\newcommand{\BITenglish}{Research Group Meeting}
+\newcommand{\BITsectiondescription}{}
+\newif\ifbitlightheader
+\bitlightheadertrue
+\newif\ifbitsectionpages
+\bitsectionpagestrue
+\newcommand{\setheaderstyle}[1]{%
+  \ifstrequal{#1}{band}{\bitlightheaderfalse\setbeamercolor{frametitle}{fg=white,bg=}}%
+  {\bitlightheadertrue\setbeamercolor{frametitle}{fg=BITtext,bg=}}}
+\setheaderstyle{light}
+\newcommand{\setenglishtitle}[1]{\renewcommand{\BITenglish}{#1}}
+\newcommand{\BITpaper}{论文英文标题}
+\newcommand{\BITauthors}{论文作者}
+\newcommand{\BITvenue}{会议 / 期刊，年份}
+\newcommand{\setpresenter}[1]{\renewcommand{\BITpresenter}{#1}}
+\newcommand{\setaffiliation}[1]{\renewcommand{\BITaffiliation}{#1}}
+\newcommand{\setmeeting}[1]{\renewcommand{\BITmeeting}{#1}}
+\newcommand{\setpaper}[3]{\renewcommand{\BITpaper}{#1}\renewcommand{\BITauthors}{#2}\renewcommand{\BITvenue}{#3}}
+\newcommand{\bitstrong}[1]{\textcolor{BITgreen}{\textbf{#1}}}
+\newcommand{\bitplaceholder}[1]{\textcolor{BITgray}{#1}}
+\newcommand{\BITframesection}{\ifnum\value{section}>0\relax\insertsectionnumber\quad\fi}
+\newcommand{\BITpageprefix}{}
+
+% The headline matches the original green-to-white band. Logo is an original asset.
+\setbeamertemplate{headline}{%
+  \begin{tikzpicture}
+    \path[use as bounding box] (0,0) rectangle (\paperwidth,11.5mm);
+    \ifbitlightheader
+      \fill[white] (0,0) rectangle (\paperwidth,11.5mm);
+      \fill[BITgreen] (0,2.3mm)--(2mm,9.1mm)--(4.4mm,9.1mm)--(2.4mm,2.3mm)--cycle;
+      \draw[BITorange,line width=.7pt] (3.1mm,2.3mm)--(5.1mm,9.1mm);
+      \draw[BITline,line width=.3pt] (3.4mm,.2mm)--(156.6mm,.2mm);
+      \node[anchor=east,inner sep=0pt] at (157.6mm,6mm)
+        {\includegraphics[width=28mm,height=7.7mm,keepaspectratio]{assets/bit-logo-header.png}};
+    \else
+      \shade[left color=BITgreen,right color=white] (0,0) rectangle (\paperwidth,11.5mm);
+      \node[anchor=east,inner sep=0pt] at (158.2mm,5.75mm)
+        {\includegraphics[width=40.7mm,height=10.6mm,keepaspectratio]{assets/bit-logo-header.png}};
+    \fi
+  \end{tikzpicture}%
+}
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip\vspace{-11.5mm}%
+  \hspace*{-7.5mm}\begin{beamercolorbox}[wd=.735\paperwidth,ht=8.3mm,dp=3.2mm,leftskip=6.2mm]{frametitle}
+    \strut\BITframesection\insertframetitle
+  \end{beamercolorbox}\vspace{2mm}%
+}
+\setbeamertemplate{footline}{%
+  \leavevmode\hbox{%
+    \begin{beamercolorbox}[wd=.88\paperwidth,ht=3mm,dp=1.7mm,leftskip=7.5mm]{normal text}
+      \usebeamerfont{footline}\fontsize{5.2}{6}\selectfont\color{BITgray}
+      德以明理\quad 学以精工\hspace{5mm}{\hypersetup{linkcolor=BITgray}\insertshorttitle}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.12\paperwidth,ht=3mm,dp=1.7mm,rightskip=6mm]{normal text}
+      \hfill\fontsize{6}{7}\selectfont\color{BITgray}\BITpageprefix\insertframenumber\,/\,\inserttotalframenumber
+    \end{beamercolorbox}}
+}
+
+% Reusable page furniture. Bottom sources use a separate overlay lane.
+\newcommand{\bitsource}[1]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=south west,inner sep=0pt,text width=.86\paperwidth,
+      font=\fontsize{5.5}{6.7}\selectfont,text=BITgray]
+      at ([xshift=7.5mm,yshift=5.5mm]current page.south west) {#1};
+  \end{tikzpicture}}
+\newcommand{\bitcallout}[1]{%
+  \par\vspace{.5em}{\color{BITline}\hrule}\vspace{.45em}
+  {\color{BITgreen}\bfseries #1}\par}
+\newcommand{\bitfigure}[3][.66\textheight]{%
+  \centering\includegraphics[width=\linewidth,height=#1,keepaspectratio]{#2}\par
+  \vspace{.35em}{\scriptsize\color{BITgray}#3}\par}
+\newcommand{\bitcolumns}[2]{%
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.48\textwidth}#1\end{column}
+    \begin{column}{.48\textwidth}#2\end{column}
+  \end{columns}}
+\newcommand{\bitimageplaceholder}[2][.44\textheight]{%
+  \begingroup\setlength{\fboxsep}{0pt}\setlength{\fboxrule}{.35pt}%
+  \fcolorbox{BITline}{white}{\parbox[c][#1][c]{\dimexpr\linewidth-2\fboxrule\relax}{%
+    \centering\small\color{BITgray}#2}}\endgroup\par}
+\newcommand{\bitexperiment}[2]{%
+  {\small\bitstrong{实验目的：}#1\par
+  \bitstrong{评估条件：}#2\par}\vspace{1mm}}
+\newcommand{\bitsection}[2]{%
+  \renewcommand{\BITsectiondescription}{#2}\section{#1}%
+  \addtocontents{toc}{\protect\BITtocdescription{#2}}}
+\newcommand{\BITtocdescription}[1]{%
+  \vspace{-2.6mm}\hspace*{7mm}\parbox[t]{64mm}{%
+    \fontsize{6.5}{8}\selectfont\color{BITgray}#1}\par\vspace{2mm}}
+
+\newcommand{\BITtitlepage}{%
+  \begin{frame}[plain]
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[white] (current page.south west) rectangle (current page.north east);
+      \node[anchor=north,inner sep=0] at ([yshift=-6.4mm]current page.north)
+        {\includegraphics[width=64mm,height=18mm,keepaspectratio]{assets/bit-logo.png}};
+      \fill[BITgreen] ([yshift=-31mm]current page.north west)
+        rectangle ([yshift=-51.5mm]current page.north east);
+      \draw[BITgreen,line width=.35pt] ([yshift=-30.1mm]current page.north west)--([yshift=-30.1mm]current page.north east);
+      \draw[BITgreen,line width=.35pt] ([yshift=-52.3mm]current page.north west)--([yshift=-52.3mm]current page.north east);
+      \node[text=white,text width=.94\paperwidth,align=center,font=\fontsize{21}{26}\selectfont\bfseries]
+        at ([yshift=-41mm]current page.north) {\inserttitle};
+      \node[text=BITgreen,text width=.9\paperwidth,align=center,font=\fontsize{13}{17}\selectfont\bfseries]
+        at ([yshift=-61mm]current page.north) {\insertsubtitle};
+      \node[text=BITgray,text width=.87\paperwidth,align=center,font=\fontsize{8}{10}\selectfont]
+        at ([yshift=-69mm]current page.north) {\BITenglish};
+      \node[anchor=south west,align=left,text=BITgray,font=\fontsize{8}{11}\selectfont]
+        at ([xshift=7.5mm,yshift=5mm]current page.south west) {\BITaffiliation\\\BITmeeting};
+      \node[anchor=south east,align=right,text=BITtext,font=\fontsize{13}{17}\selectfont\bfseries]
+        at ([xshift=-7mm,yshift=3.2mm]current page.south east) {\BITpresenter\\\insertdate};
+    \end{tikzpicture}
+  \end{frame}}
+
+\newcommand{\BITcompacttoc}{%
+  \begingroup
+  \setlength{\parskip}{0pt}%
+  \def\beamer@sectionintoc##1##2##3##4##5{%
+    \noindent\makebox[7mm][l]{\color{BITorange}##1}%
+    \parbox[t]{64mm}{\bfseries\hypersetup{linkcolor=BITtext}%
+      \hyperlink{Navigation##3}{##2}}\par\vspace{.7mm}}%
+  \def\BITtocdescription##1{%
+    \noindent\hspace*{7mm}\parbox[t]{64mm}{%
+      \fontsize{6.5}{8}\selectfont\color{BITgray}##1}\par\vspace{3mm}}%
+  \tableofcontents[hideallsubsections]
+  \endgroup}
+\newcommand{\BITcontents}{%
+  \begin{frame}[plain]
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[anchor=north west,inner sep=0] at (current page.north west)
+        {\includegraphics[width=\paperwidth]{assets/campus-banner.png}};
+      \node[text=BITtitle,font=\fontsize{29}{34}\selectfont\bfseries]
+        at ([xshift=40mm,yshift=-53mm]current page.north west) {目录};
+      \node[text=BITgray,font=\fontsize{10}{12}\selectfont]
+        at ([xshift=40mm,yshift=-63mm]current page.north west) {CONTENTS};
+      \draw[BITorange,line width=1.6pt] ([xshift=36.3mm,yshift=-68mm]current page.north west)--++(7.6mm,0);
+      \node[anchor=north west,text width=73mm,inner sep=0]
+        at ([xshift=77mm,yshift=-38mm]current page.north west)
+        {\BITcompacttoc};
+    \end{tikzpicture}
+  \end{frame}}
+\setbeamertemplate{section in toc}{%
+  \leavevmode\makebox[7mm][l]{\color{BITorange}\inserttocsectionnumber}%
+  {\color{BITtext}\bfseries\inserttocsection}\par\vspace{3mm}}
+
+\newcommand{\BITsectionpage}{%
+  \begin{frame}[plain]
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[anchor=north west,inner sep=0] at (current page.north west)
+        {\includegraphics[width=\paperwidth]{assets/campus-banner.png}};
+      \node[circle,fill=BITgreen,text=white,minimum size=10.3mm,inner sep=0,
+        font=\fontsize{19}{23}\selectfont] at ([xshift=53.5mm,yshift=-59.5mm]current page.north west)
+        {\insertsectionnumber};
+      \node[anchor=west,text=black,text width=90mm,font=\fontsize{19}{24}\selectfont\bfseries]
+        at ([xshift=63mm,yshift=-58mm]current page.north west)
+        {{\hypersetup{linkcolor=black}\insertsection}};
+      \node[anchor=north west,text=BITgray,text width=86mm,font=\fontsize{8.5}{11}\selectfont]
+        at ([xshift=63mm,yshift=-65mm]current page.north west) {\BITsectiondescription};
+    \end{tikzpicture}
+  \end{frame}}
+\AtBeginSection[]{\ifbitsectionpages\BITsectionpage\fi}
+
+\newcommand{\BITthankyou}{%
+  \begin{frame}
+    \vfill\centering{\fontsize{25}{31}\selectfont\color{BITgreen}\bfseries 谢谢！}\par
+    \vspace{6mm}{\large\color{BITgreen}欢迎讨论}\par
+    \vspace{4mm}{\small\color{BITgray}\BITpresenter\quad\insertdate}\par\vfill
+  \end{frame}}
+\endinput

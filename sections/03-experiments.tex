@@ -1,0 +1,63 @@
+\bitsection{实验与结果}{评估目的、对比实验与机制分析}
+
+\begin{frame}{实验设计与评价指标}
+  \bitexperiment{\bitplaceholder{本实验要回答的具体问题。}}%
+    {\bitplaceholder{数据划分、运行条件、对比方法与重复次数。}}
+  \vspace{2mm}
+  \small\renewcommand{\arraystretch}{1.7}
+  \begin{tabularx}{\textwidth}{@{}p{28mm}XX@{}}
+    \toprule
+    \bitstrong{评价维度} & \bitstrong{指标 / 单位} & \bitstrong{统计方式}\\\midrule
+    任务完成 & \bitplaceholder{成功率或任务分数} & \bitplaceholder{总次数、均值与波动}\\
+    输出质量 & \bitplaceholder{误差或质量指标} & \bitplaceholder{评估对象与计算范围}\\
+    运行效率 & \bitplaceholder{时间、频率或算力} & \bitplaceholder{硬件、批量与计时范围}\\\bottomrule
+  \end{tabularx}
+  \bitsource{说明数值越大 / 越小越好；不要把不同设置的结果直接并列比较。}
+\end{frame}
+
+\begin{frame}{主要结果与基线对比}
+  \bitexperiment{\bitplaceholder{验证方法是否改善核心任务表现。}}%
+    {\bitplaceholder{所有方法采用相同的训练和测试条件。}}
+  \small\renewcommand{\arraystretch}{1.6}
+  \begin{tabularx}{\textwidth}{@{}Xrrr@{}}
+    \toprule
+    \bitstrong{方法} & \bitstrong{指标 A $\uparrow$} & \bitstrong{指标 B $\downarrow$} & \bitstrong{指标 C $\downarrow$}\\\midrule
+    基线方法 A & --- & --- & ---\\
+    基线方法 B & --- & --- & ---\\
+    本文 / 本工作 & --- & --- & ---\\\bottomrule
+  \end{tabularx}
+  \bitcallout{结果结论：\bitplaceholder{指出改善量、比较对象与指标单位。}}
+  \bitsource{此表为占位模板，未填写任何实验数值。实际汇报时补充来源和统计口径。}
+\end{frame}
+
+\begin{frame}{定性结果与现象解释}
+  \bitexperiment{\bitplaceholder{比较两种方法的行为差异。}}%
+    {\bitplaceholder{相同输入、相同场景与对应时刻。}}
+  \bitcolumns{%
+    \bitstrong{参考 / 方法 A}\par\vspace{1mm}
+    \bitimageplaceholder[.33\textheight]{插入参考图、轨迹或视频关键帧}
+  }{%
+    \bitstrong{本文 / 方法 B}\par\vspace{1mm}
+    \bitimageplaceholder[.33\textheight]{插入方法结果、轨迹或视频关键帧}
+  }
+  \bitcallout{现象解释：\bitplaceholder{用具体运动、误差或预测变化解释结果。}}
+  \bitsource{图注应注明颜色、时间、参考对象及来源。PDF 建议使用关键帧或链接。}
+\end{frame}
+
+\begin{frame}{消融实验与参数影响}
+  \bitexperiment{\bitplaceholder{隔离关键组件或参数的作用。}}%
+    {\bitplaceholder{每次仅改变一项因素，其余条件保持一致。}}
+  \bitcolumns{%
+    \small\renewcommand{\arraystretch}{1.6}
+    \begin{tabularx}{\linewidth}{@{}Xr@{}}
+      \toprule
+      \bitstrong{配置} & \bitstrong{指标}\\\midrule
+      完整方法 & ---\\
+      移除模块 A & ---\\
+      替换模块 B & ---\\\bottomrule
+    \end{tabularx}
+  }{%
+    \bitimageplaceholder[.32\textheight]{插入参数曲线或误差分析图}
+  }
+  \bitcallout{机制分析：\bitplaceholder{结合设计动机解释消融结果与参数权衡。}}
+\end{frame}

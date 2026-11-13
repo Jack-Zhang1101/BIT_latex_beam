@@ -1,0 +1,46 @@
+% !TEX program = xelatex
+% 专题讲解入口：先定义概念，再讲机制，最后连接到任务。
+\documentclass[aspectratio=169,10pt,fontset=none]{ctexbeamer}
+\usetheme{BITUniversal}
+\input{config}
+\begin{document}
+\BITtitlepage
+\BITcontents
+\bitsection{问题与基础概念}{应用背景、必要术语与直观理解}
+\begin{frame}{应用背景与核心问题}
+  \bitimageplaceholder[.44\textheight]{插入观众熟悉的应用场景}
+  \bitcallout{问题：\bitplaceholder{这个场景为什么需要本次介绍的方法。}}
+\end{frame}
+\begin{frame}{概念定义与简单例子}
+  \bitcolumns{\begin{block}{定义与符号}
+    \bitplaceholder{一句话定义，并给出必要公式。}\end{block}}%
+    {\begin{block}{具体例子}
+    \bitplaceholder{用一个简单输入说明输出是什么。}\end{block}}
+\end{frame}
+\bitsection{原理与计算过程}{结构、关键操作与计算步骤}
+\begin{frame}{结构与信息流}
+  \bitimageplaceholder[.54\textheight]{插入模型或算法结构图}
+  \bitsource{来源：原始论文、教材或官方说明。}
+\end{frame}
+\begin{frame}{关键计算与直观解释}
+  \begin{block}{数学表达}
+    \[ y_t=f_{\theta}(x_{\leq t},c) \]
+  \end{block}
+  \bitcallout{直观解释：\bitplaceholder{从输入、计算操作与输出三个方面说明。}}
+\end{frame}
+\bitsection{应用与讨论}{连接控制任务、比较方法与适用条件}
+\begin{frame}{任务建模与训练推理}
+  \bitcolumns{\begin{block}{任务如何表示}
+    \bitplaceholder{状态、条件、输出的对应关系。}\end{block}}%
+    {\begin{block}{模型如何使用}
+    \bitplaceholder{训练目标与执行过程。}\end{block}}
+\end{frame}
+\begin{frame}{总结与适用条件}
+  \begin{itemize}
+    \item \bitplaceholder{方法的主要能力。}
+    \item \bitplaceholder{成立的前提和使用成本。}
+    \item \bitplaceholder{与本课题相关的应用方向。}
+  \end{itemize}
+\end{frame}
+\BITthankyou
+\end{document}

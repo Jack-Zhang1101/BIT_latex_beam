@@ -1,0 +1,52 @@
+% !TEX program = xelatex
+% 论文精读入口。修改 config.tex 后，在本文件填写实际论文内容。
+\documentclass[aspectratio=169,10pt,fontset=none]{ctexbeamer}
+\usetheme{BITUniversal}
+\input{config}
+\begin{document}
+\BITtitlepage
+\BITcontents
+\bitsection{背景与相关工作}{研究问题、已有方法与本文定位}
+\begin{frame}{论文信息与核心问题}
+  \begin{block}{\BITpaper}
+    \BITauthors\\[.5em]{\small\color{BITgray}\BITvenue}
+  \end{block}
+  \begin{itemize}
+    \item \bitplaceholder{研究对象、应用条件与现有瓶颈。}
+    \item \bitplaceholder{相对最相关方法的关键改进。}
+  \end{itemize}
+  \bitcallout{核心贡献：\bitplaceholder{一句话概括最有价值的技术改进。}}
+\end{frame}
+\bitsection{方法与训练流程}{整体框架、关键设计与运行方式}
+\begin{frame}{整体框架}
+  \bitimageplaceholder[.56\textheight]{插入论文框架图}
+  \bitsource{来源：论文 Fig. X。}
+\end{frame}
+\begin{frame}{关键设计与训练推理}
+  \bitcolumns{\begin{block}{关键机制}
+    \bitplaceholder{输入、输出与设计动机。}\end{block}}%
+    {\begin{block}{训练与推理}
+    \bitplaceholder{训练目标、推理条件与计算开销。}\end{block}}
+  \bitcallout{关键作用：\bitplaceholder{说明设计如何解决前面的问题。}}
+\end{frame}
+\bitsection{实验结果与分析}{主要结果、消融与适用范围}
+\begin{frame}{实验设置与主要结果}
+  \bitexperiment{\bitplaceholder{验证核心贡献。}}{\bitplaceholder{数据、基线、指标与统计口径。}}
+  \bitimageplaceholder[.43\textheight]{插入结果图或替换为原生表格}
+  \bitcallout{结果：\bitplaceholder{关键数值、比较对象及结论。}}
+\end{frame}
+\begin{frame}{消融实验与现象解释}
+  \bitexperiment{\bitplaceholder{验证关键模块的作用。}}{\bitplaceholder{保持其余条件一致。}}
+  \bitimageplaceholder[.43\textheight]{插入消融结果或定性对比}
+  \bitcallout{解释：\bitplaceholder{结合设计动机解释结果。}}
+\end{frame}
+\bitsection{总结与讨论}{技术结论与本课题的联系}
+\begin{frame}{总结与课题启发}
+  \begin{itemize}
+    \item \bitplaceholder{最重要的贡献与证据。}
+    \item \bitplaceholder{已验证的范围及局限。}
+    \item \bitplaceholder{可复用的设计和需要额外验证的假设。}
+  \end{itemize}
+\end{frame}
+\BITthankyou
+\end{document}
